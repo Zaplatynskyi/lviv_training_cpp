@@ -13,9 +13,9 @@ const std::string vowels = "AEIOUYaeouy";
 
 Result countLetter(const std::string& firstLetter) {
     Result result{};
-    for (int i = 0; i < firstLetter.length(); ++i) {
-        if (isalpha(firstLetter[i]))
-            if (vowels.find(firstLetter[i]) != std::string::npos)
+    for (const auto &letter: firstLetter){
+        if (isalpha(letter))
+            if (vowels.find(letter) != std::string::npos)
                 ++result.vowels;
             else
                 ++result.consonant;
