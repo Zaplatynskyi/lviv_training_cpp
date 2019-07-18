@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include "Graph.h"
+#include "ShortestPath.h"
 
 int main(int argc, char **argv) {
     std::vector<Point> points;
@@ -17,7 +18,10 @@ int main(int argc, char **argv) {
         perror("file not open");
 
     Graph graph(points);
-    graph.showPaths();
-
+    std::vector<std::vector<int>> matrix;
+    matrix = graph.getGraphMatrix();
+    int topPoint = graph.calculateVerticals();
+    ShortestPath path(matrix,topPoint);
+    path.showPaths();
     return 0;
 }

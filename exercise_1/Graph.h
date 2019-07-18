@@ -12,17 +12,19 @@ struct Point {
     int to = 0;
     int weight = 0;
 
+    bool operator <(Point const& Right)
+    {
+        return from < Right.from;
+    }
 };
 
 class Graph {
 private:
     std::vector<Point> _points;
 public:
-    Graph(std::vector<Point> &points);
-    int calculateVerticals();
-    int **getGraphMatrix(std::vector<Point> &points, int topPoint);
-    void showPaths();
-    int *getPaths(int **GR, int V, int start);
+    Graph(const std::vector<Point> &points);
+    const int calculateVerticals();
+    std::vector<std::vector<int>> getGraphMatrix();
 };
 
 
