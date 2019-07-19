@@ -22,6 +22,6 @@ int main(int argc, char **argv) {
     matrix = graph.getGraphMatrix();
     int topPoint = graph.calculateVerticals();
     ShortestPath path(matrix,topPoint);
-    path.showPaths();
+    std::cout<<path;
     return 0;
 }

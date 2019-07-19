@@ -23,7 +23,7 @@ private:
     std::vector<Point> _points;
 public:
     Graph(const std::vector<Point> &points);
-    const int calculateVerticals();
+    int calculateVerticals();
     std::vector<std::vector<int>> getGraphMatrix();
 };
 
