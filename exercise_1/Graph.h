@@ -12,7 +12,7 @@ struct Point {
     int to = 0;
     int weight = 0;
 
-    bool operator <(Point const& Right)
+    bool operator <(Point const& Right)const
     {
         return from < Right.from;
     }
@@ -23,7 +23,7 @@ private:
     std::vector<Point> _points;
 public:
     Graph(const std::vector<Point> &points);
-    int calculateVerticals();
+    int calculateVerticals()const ;
     std::vector<std::vector<int>> getGraphMatrix();
 };
 
