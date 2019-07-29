@@ -25,3 +25,5 @@ std::vector<std::vector<int> > Graph::getGraphMatrix(){
         graphMatrix[point.from][point.to]=point.weight;
     return graphMatrix;
 }
+
+
