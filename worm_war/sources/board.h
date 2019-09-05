@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <thread>
+#include <mutex>
 
 #include "worm.h"
 
@@ -11,6 +12,7 @@ enum WormType {
 };
 
 class Board {
+    std::mutex mtx;
  protected:
   std::vector<std::vector<int>> board_;
   std::unordered_map<int, std::thread> worms_;
@@ -21,7 +23,7 @@ class Board {
 
  public:
   Board(int width, int height);
-  virtual ~Board() { }
+  virtual ~Board();
   virtual void addWorm(WormType type, int x, int y);
   virtual int getWidth() const { return board_[0].size(); }
   virtual int getHeight() const { return board_.size(); }
