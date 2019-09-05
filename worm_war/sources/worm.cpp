@@ -16,10 +16,38 @@ using std::vector;
 
 void Worm::move() {
   int oldX = x_, oldY = y_;
-
-  // TODO: Implement the body of the function. It should perform one step
-  // based on currDir_ and modify class variables x_ and y_.
-
+    switch (currDir_)
+    {
+        case LEFT:
+        {
+            if (x_ > 0){
+                --x_;
+            }   else
+            {
+                x_ = board_->getWidth()-1;
+            }
+            break;
+        }
+        case UP:
+        {
+            y_ = (y_ + 1) % board_->getHeight();
+            break;
+        }
+        case RIGHT:
+        {
+            x_ = (x_ + 1) % board_->getWidth();
+            break;
+        }
+        case DOWN:
+        {
+            if (y_ > 0){
+                --y_;
+            } else {
+                y_ = board_->getHeight()-1;
+            }
+            break;
+        }
+    }
   board_->update(id_,oldX,oldY,x_,y_);
 }
 

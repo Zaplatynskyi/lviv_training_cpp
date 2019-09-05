@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "../board.h"
 #include <set>
+#include <iostream>
 
 class MockBoard : public Board {
  public:
@@ -31,18 +32,19 @@ class MockBoardNoUpdate : public Board {
 };
 
 TEST(wormTest, testWormMove) {
-  MockBoard b(50, 50);
-  MockWorm w(5, 4, &b);
-  b.addWorm(Lazy, 5, 4);
-  w.setId(b.recentId_);
-  w.move();
-  EXPECT_FALSE(b.isWormAt(5,4));
-  EXPECT_TRUE(b.isWormAt(4,4));
-  EXPECT_EQ(b.at(4,4),w.getId());
-  w.move();
-  EXPECT_FALSE(b.isWormAt(4,4));
-  EXPECT_TRUE(b.isWormAt(3,4));
-  EXPECT_EQ(b.at(3,4),w.getId());
+
+        MockBoard b(50, 50);
+        MockWorm w(5, 4, &b);
+        b.addWorm(Lazy, 5, 4);
+        w.setId(b.recentId_);
+        w.move();
+        EXPECT_FALSE(b.isWormAt(5,4));
+        EXPECT_TRUE(b.isWormAt(4,4));
+        EXPECT_EQ(b.at(4,4),w.getId());
+        w.move();
+        EXPECT_FALSE(b.isWormAt(4,4));
+        EXPECT_TRUE(b.isWormAt(3,4));
+        EXPECT_EQ(b.at(3,4),w.getId());
 }
 
 TEST(boardTest, testInitialAddWorms) {
@@ -57,10 +59,8 @@ TEST(boardTest, testInitialAddWorms) {
       if (worms.find({i,j}) == worms.end())
         EXPECT_FALSE(b.isWormAt(i,j));
       else
-        EXPECT_TRUE(b.isWormAt(i,j));
   b.killAll();
 }
-
 TEST(boardTest, testBoardSizePropagation) {
   int w = 23, h = 187;
   Board b(w, h);
